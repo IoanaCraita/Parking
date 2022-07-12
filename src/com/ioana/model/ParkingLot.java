@@ -15,6 +15,10 @@ public class ParkingLot {
     }
 
 
+    public void findEmptyParkingSpotForVehicleType(VehicleType vehicleType) {
+    }
+
+
     public String getName() {
         return name;
     }
