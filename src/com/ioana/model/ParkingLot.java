@@ -1,5 +1,6 @@
 package com.ioana.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot {
@@ -15,7 +16,23 @@ public class ParkingLot {
     }
 
 
-    public void findEmptyParkingSpotForVehicleType(VehicleType vehicleType) {
+    public ParkingSpot findEmptyParkingSpotForVehicleType(VehicleType vehicleType) {
+        for (ParkingSpot parkingSpot : parkingSpots) {
+            if (parkingSpot.getVehicleType().equals(vehicleType) && parkingSpot.getVehicleLicensePlate() == null) {
+                return parkingSpot;
+            }
+        }
+        return null;
+    }
+
+    public Valet findValetByVehicleType(VehicleType vehicleType) {
+        List<Valet> valetsForVehicleType = new ArrayList<>();
+        for (Valet valet : valets) {
+            if (valet.getVehicleTypes().contains(vehicleType)) {
+                valetsForVehicleType.add(valet);
+            }
+        }
+        return null;
     }
 
 

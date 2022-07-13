@@ -14,8 +14,8 @@ import java.util.List;
 public class Main {
 
 
-    //creare Parking Spot
     public static void main(String[] args) {
+        //creare Parking Lot
         List<ParkingSpot> parkingSpots = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {
@@ -24,14 +24,14 @@ public class Main {
         }
 
         List<Valet> valets = new ArrayList<>();
-        Valet valet1 = new Valet(Arrays.asList(VehicleType.CAR, VehicleType.BUS),"David");
-        Valet valet2 = new Valet(Arrays.asList(VehicleType.CAR),"Ioana");
-        Valet valet3 = new Valet(Arrays.asList(VehicleType.MOTORCYCLE, VehicleType.BUS),"SDKFSD");
+        Valet valet1 = new Valet(Arrays.asList(VehicleType.CAR, VehicleType.BUS), "David");
+        Valet valet2 = new Valet(Arrays.asList(VehicleType.CAR), "Ioana");
+        Valet valet3 = new Valet(Arrays.asList(VehicleType.MOTORCYCLE, VehicleType.BUS), "SDKFSD");
         Collections.addAll(valets, valet1, valet2, valet3);
 
         ParkingLot parkingLot = new ParkingLot("First", valets, parkingSpots);
 
-    //creare lista de vehicule
+        //creare lista de vehicule
         List<Vehicle> vehicles = new ArrayList<>();
         BufferedReader reader = null;
         try {
@@ -39,7 +39,7 @@ public class Main {
             String st;
             while ((st = reader.readLine()) != null) {
                 String[] values = st.split(",");
-                Vehicle vehicle = new Vehicle(VehicleType.valueOf(values[0]),values[1]);
+                Vehicle vehicle = new Vehicle(VehicleType.valueOf(values[0]), values[1]);
                 vehicles.add(vehicle);
             }
         } catch (FileNotFoundException fileNotFoundException) {
@@ -48,7 +48,7 @@ public class Main {
         } catch (IOException ioException) {
             System.out.println("There was a problem reading from this file");
             ioException.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (reader != null) {
                     reader.close();
@@ -56,6 +56,17 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        for (Vehicle vehicle : vehicles) {
+            ParkingSpot parkingSpot = parkingLot.findEmptyParkingSpotForVehicleType(vehicle.getVehicleType());
+            if (parkingSpot == null) {
+                System.out.println("Parking spot not available");
+            } else {
+
+            }
+            int i = 2;
+
         }
 
     }
